@@ -7,6 +7,7 @@ using Newtonsoft.Json;
 using Template10.Controls.Validation;
 using Template10.Interfaces.Validation;
 using Windows.Foundation.Collections;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Template10.Validation
 {
@@ -83,21 +84,21 @@ namespace Template10.Validation
             Validate();
         }
 
-        [JsonIgnore]
+        [NotMapped, JsonIgnore]
         public ObservableDictionary<string, IProperty> Properties { get; }
             = new ObservableDictionary<string, IProperty>();
 
-        [JsonIgnore]
+        [NotMapped, JsonIgnore]
         public ObservableCollection<string> Errors { get; }
             = new ObservableCollection<string>();
 
-        [JsonIgnore]
+        [NotMapped, JsonIgnore]
         public Action<IValidatableModel> Validator { set; get; }
 
-        [JsonIgnore]
+        [NotMapped, JsonIgnore]
         public bool IsValid => !Errors.Any();
 
-        [JsonIgnore]
+        [NotMapped, JsonIgnore]
         public bool IsDirty { get; }
 
         public void RaisePropertyChanged([CallerMemberName] string propertyName = null)
