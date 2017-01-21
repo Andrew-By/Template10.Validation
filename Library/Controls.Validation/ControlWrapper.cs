@@ -11,8 +11,11 @@ namespace Template10.Controls.Validation
     {
         public ControlWrapper()
         {
-            DefaultStyleKey = typeof(ControlWrapper);
-            DataContextChanged += (s, e) => Property = GetProperty(e.NewValue);
+            if (!Windows.ApplicationModel.DesignMode.DesignModeEnabled)
+            {
+                DefaultStyleKey = typeof(ControlWrapper);
+                DataContextChanged += (s, e) => Property = GetProperty(e.NewValue);
+            }
         }
 
         //Rectangle Indicator;
